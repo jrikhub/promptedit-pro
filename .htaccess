@@ -1,4 +1,9 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # If the request is already pointing inside the public directory, let it pass through
+    RewriteCond %{REQUEST_URI} !^/public/
+
+    # Quietly route everything into the public sub-folder
     RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
